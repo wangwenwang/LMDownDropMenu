@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		303080751F025511003FF6A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 303080741F025511003FF6A0 /* main.m */; };
+		303080781F025511003FF6A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 303080771F025511003FF6A0 /* AppDelegate.m */; };
+		3030807B1F025511003FF6A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3030807A1F025511003FF6A0 /* ViewController.m */; };
+		3030807E1F025511003FF6A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3030807C1F025511003FF6A0 /* Main.storyboard */; };
+		303080801F025511003FF6A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3030807F1F025511003FF6A0 /* Assets.xcassets */; };
+		303080831F025511003FF6A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303080811F025511003FF6A0 /* LaunchScreen.storyboard */; };
+		30DA97011F02566A0014682D /* LMDropDownMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DA96FA1F02566A0014682D /* LMDropDownMenuTableViewCell.m */; };
+		30DA97021F02566A0014682D /* LMDropDownMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30DA96FB1F02566A0014682D /* LMDropDownMenuTableViewCell.xib */; };
+		30DA97031F02566A0014682D /* LMDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DA96FD1F02566A0014682D /* LMDropMenu.m */; };
+		30DA97041F02566A0014682D /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DA97001F02566A0014682D /* DataItemModel.m */; };
+		F56AAB34665D6611AAA05683 /* libPods-LMDownDropMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D381A8AB9AF03E613D85778F /* libPods-LMDownDropMenu.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		303080701F025511003FF6A0 /* LMDownDropMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMDownDropMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		303080741F025511003FF6A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		303080761F025511003FF6A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		303080771F025511003FF6A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		303080791F025511003FF6A0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3030807A1F025511003FF6A0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3030807D1F025511003FF6A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3030807F1F025511003FF6A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		303080821F025511003FF6A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		303080841F025511003FF6A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30DA96F91F02566A0014682D /* LMDropDownMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDropDownMenuTableViewCell.h; sourceTree = "<group>"; };
+		30DA96FA1F02566A0014682D /* LMDropDownMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDropDownMenuTableViewCell.m; sourceTree = "<group>"; };
+		30DA96FB1F02566A0014682D /* LMDropDownMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMDropDownMenuTableViewCell.xib; sourceTree = "<group>"; };
+		30DA96FC1F02566A0014682D /* LMDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDropMenu.h; sourceTree = "<group>"; };
+		30DA96FD1F02566A0014682D /* LMDropMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDropMenu.m; sourceTree = "<group>"; };
+		30DA96FF1F02566A0014682D /* DataItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemModel.h; sourceTree = "<group>"; };
+		30DA97001F02566A0014682D /* DataItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemModel.m; sourceTree = "<group>"; };
+		5E458559F92E257DE21957E0 /* Pods-LMDownDropMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMDownDropMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LMDownDropMenu/Pods-LMDownDropMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		D381A8AB9AF03E613D85778F /* libPods-LMDownDropMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LMDownDropMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F9BF9C3BC1413F638E3ACC /* Pods-LMDownDropMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMDownDropMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-LMDownDropMenu/Pods-LMDownDropMenu.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3030806D1F025511003FF6A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F56AAB34665D6611AAA05683 /* libPods-LMDownDropMenu.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		303080671F025511003FF6A0 = {
+			isa = PBXGroup;
+			children = (
+				303080721F025511003FF6A0 /* LMDownDropMenu */,
+				303080711F025511003FF6A0 /* Products */,
+				A0A656DBDA917E770C968945 /* Pods */,
+				60267FBE5B0EB69760C87A17 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		303080711F025511003FF6A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				303080701F025511003FF6A0 /* LMDownDropMenu.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		303080721F025511003FF6A0 /* LMDownDropMenu */ = {
+			isa = PBXGroup;
+			children = (
+				30DA96F71F02566A0014682D /* Menu */,
+				303080761F025511003FF6A0 /* AppDelegate.h */,
+				303080771F025511003FF6A0 /* AppDelegate.m */,
+				303080791F025511003FF6A0 /* ViewController.h */,
+				3030807A1F025511003FF6A0 /* ViewController.m */,
+				3030807C1F025511003FF6A0 /* Main.storyboard */,
+				3030807F1F025511003FF6A0 /* Assets.xcassets */,
+				303080811F025511003FF6A0 /* LaunchScreen.storyboard */,
+				303080841F025511003FF6A0 /* Info.plist */,
+				303080731F025511003FF6A0 /* Supporting Files */,
+			);
+			path = LMDownDropMenu;
+			sourceTree = "<group>";
+		};
+		303080731F025511003FF6A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				303080741F025511003FF6A0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30DA96F71F02566A0014682D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				30DA96F81F02566A0014682D /* Cell */,
+				30DA96FE1F02566A0014682D /* Model */,
+				30DA96FC1F02566A0014682D /* LMDropMenu.h */,
+				30DA96FD1F02566A0014682D /* LMDropMenu.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		30DA96F81F02566A0014682D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				30DA96F91F02566A0014682D /* LMDropDownMenuTableViewCell.h */,
+				30DA96FA1F02566A0014682D /* LMDropDownMenuTableViewCell.m */,
+				30DA96FB1F02566A0014682D /* LMDropDownMenuTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		30DA96FE1F02566A0014682D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30DA96FF1F02566A0014682D /* DataItemModel.h */,
+				30DA97001F02566A0014682D /* DataItemModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60267FBE5B0EB69760C87A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D381A8AB9AF03E613D85778F /* libPods-LMDownDropMenu.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0A656DBDA917E770C968945 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E458559F92E257DE21957E0 /* Pods-LMDownDropMenu.debug.xcconfig */,
+				F7F9BF9C3BC1413F638E3ACC /* Pods-LMDownDropMenu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3030806F1F025511003FF6A0 /* LMDownDropMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 303080871F025511003FF6A0 /* Build configuration list for PBXNativeTarget "LMDownDropMenu" */;
+			buildPhases = (
+				25CD6EF6CBF1A3A32B133922 /* [CP] Check Pods Manifest.lock */,
+				3030806C1F025511003FF6A0 /* Sources */,
+				3030806D1F025511003FF6A0 /* Frameworks */,
+				3030806E1F025511003FF6A0 /* Resources */,
+				C7B3E4233119F52A3C76F1C8 /* [CP] Embed Pods Frameworks */,
+				A143903472B2D9C297D7EDE3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LMDownDropMenu;
+			productName = LMDownDropMenu;
+			productReference = 303080701F025511003FF6A0 /* LMDownDropMenu.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		303080681F025511003FF6A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = LM;
+				TargetAttributes = {
+					3030806F1F025511003FF6A0 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3030806B1F025511003FF6A0 /* Build configuration list for PBXProject "LMDownDropMenu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 303080671F025511003FF6A0;
+			productRefGroup = 303080711F025511003FF6A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3030806F1F025511003FF6A0 /* LMDownDropMenu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3030806E1F025511003FF6A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				303080831F025511003FF6A0 /* LaunchScreen.storyboard in Resources */,
+				303080801F025511003FF6A0 /* Assets.xcassets in Resources */,
+				30DA97021F02566A0014682D /* LMDropDownMenuTableViewCell.xib in Resources */,
+				3030807E1F025511003FF6A0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25CD6EF6CBF1A3A32B133922 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A143903472B2D9C297D7EDE3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LMDownDropMenu/Pods-LMDownDropMenu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7B3E4233119F52A3C76F1C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LMDownDropMenu/Pods-LMDownDropMenu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3030806C1F025511003FF6A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30DA97041F02566A0014682D /* DataItemModel.m in Sources */,
+				3030807B1F025511003FF6A0 /* ViewController.m in Sources */,
+				303080781F025511003FF6A0 /* AppDelegate.m in Sources */,
+				30DA97031F02566A0014682D /* LMDropMenu.m in Sources */,
+				30DA97011F02566A0014682D /* LMDropDownMenuTableViewCell.m in Sources */,
+				303080751F025511003FF6A0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3030807C1F025511003FF6A0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3030807D1F025511003FF6A0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		303080811F025511003FF6A0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				303080821F025511003FF6A0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		303080851F025511003FF6A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		303080861F025511003FF6A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		303080881F025511003FF6A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E458559F92E257DE21957E0 /* Pods-LMDownDropMenu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LMDownDropMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaidongyuan.LMDownDropMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		303080891F025511003FF6A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7F9BF9C3BC1413F638E3ACC /* Pods-LMDownDropMenu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LMDownDropMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaidongyuan.LMDownDropMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3030806B1F025511003FF6A0 /* Build configuration list for PBXProject "LMDownDropMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				303080851F025511003FF6A0 /* Debug */,
+				303080861F025511003FF6A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		303080871F025511003FF6A0 /* Build configuration list for PBXNativeTarget "LMDownDropMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				303080881F025511003FF6A0 /* Debug */,
+				303080891F025511003FF6A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 303080681F025511003FF6A0 /* Project object */;
+}
