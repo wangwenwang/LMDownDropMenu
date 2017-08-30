@@ -10,9 +10,14 @@
 #import "LMDropMenu.h"
 #import "DataItemModel.h"
 
-@interface ViewController ()<LMDropDownMenuDataSource, LMDropDownMenuDelegate>
+@interface ViewController ()<LMDropDownMenuDataSource, LMDropDownMenuDelegate> {
+    
+    NSUInteger _currentIndex;
+}
 
 @property (strong, nonatomic) NSDictionary *MultiArrList;
+
+@property (strong, nonatomic) NSMutableDictionary *MultiArrListTemp;
 
 @end
 
@@ -70,6 +75,21 @@
     _MultiArrList = @{@(0) : [array1 copy], @(1) : [array2 copy], @(2) : [array3 copy]};
     
     
+    _MultiArrListTemp = [[NSMutableDictionary alloc] init];
+    
+    for (int i = 0; i < _MultiArrList.count; i++) {
+        
+        NSMutableArray *arrayTemp = [[NSMutableArray alloc] init];
+        NSMutableArray *array = _MultiArrList[@(i)];
+        for (int i = 0; i < array.count; i++) {
+            
+            DataItemModel *m = array[i];
+            [arrayTemp addObject:[m copy]];
+        }
+        
+        [_MultiArrListTemp addEntriesFromDictionary:@{@(i) : arrayTemp}];
+    }
+    
     
     LMDropMenu *menu = [[LMDropMenu alloc] initWithOrigin:CGPointMake(0, 20) andHeight:45];
     menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
@@ -92,7 +112,7 @@
 
 - (NSUInteger)menu:(LMDropMenu *)menu numberOfRowsInColumn:(NSUInteger)column {
     
-    NSArray *array = _MultiArrList[@(column)];
+    NSArray *array = _MultiArrListTemp[@(column)];
     
     return array.count;
 }
@@ -100,7 +120,7 @@
 
 - (DataItemModel *)menu:(LMDropMenu *)menu titleForRowAtIndexPath:(LMIndexPath *)indexPath {
     
-    NSArray *array = _MultiArrList[@(indexPath.column)];
+    NSArray *array = _MultiArrListTemp[@(indexPath.column)];
     
     DataItemModel *item = array[indexPath.row];
     
@@ -112,7 +132,7 @@
     
     NSLog(@"column:%ld  row:%ld", (long)indexPath.column, (long)indexPath.row);
     
-    DataItemModel *item = _MultiArrList[@(indexPath.column)][indexPath.row];
+    DataItemModel *item = _MultiArrListTemp[@(indexPath.column)][indexPath.row];
     
     item.selected = !item.selected;
 }
@@ -120,7 +140,7 @@
 
 - (NSInteger)numberOfColumnsInMenu:(LMDropMenu *)menu {
     
-    return _MultiArrList.count;
+    return _MultiArrListTemp.count;
 }
 
 
@@ -138,6 +158,55 @@
     } else {
         
         return @"";
+    }
+}
+
+
+- (void)menuTapped:(NSUInteger)touchIndex {
+    
+    _currentIndex = touchIndex;
+}
+
+
+- (void)antiElectionOnclick {
+    
+    NSMutableArray *arrayTemp = _MultiArrListTemp[@(_currentIndex)];
+    for (int i = 0; i < arrayTemp.count; i++) {
+        
+        DataItemModel *mTemp = arrayTemp[i];
+        mTemp.selected = !mTemp.selected;
+    }
+}
+
+
+- (void)filterComplete {
+    
+    for (int i = 0; i < _MultiArrListTemp.count; i++) {
+        
+        NSMutableArray *array = _MultiArrList[@(i)];
+        NSMutableArray *arrayTemp = _MultiArrListTemp[@(i)];
+        for (int i = 0; i < array.count; i++) {
+            
+            DataItemModel *m = array[i];
+            DataItemModel *mTemp = arrayTemp[i];
+            m.selected = mTemp.selected;
+        }
+    }
+}
+
+
+- (void)filterCancel {
+    
+    for (int i = 0; i < _MultiArrListTemp.count; i++) {
+        
+        NSMutableArray *array = _MultiArrList[@(i)];
+        NSMutableArray *arrayTemp = _MultiArrListTemp[@(i)];
+        for (int i = 0; i < array.count; i++) {
+            
+            DataItemModel *m = array[i];
+            DataItemModel *mTemp = arrayTemp[i];
+            mTemp.selected = m.selected;
+        }
     }
 }
 

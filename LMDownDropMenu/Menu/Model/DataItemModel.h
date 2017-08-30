@@ -10,8 +10,11 @@
 
 @interface DataItemModel : NSObject
 
-@property (copy, nonatomic) NSString *title;
+@property (nonatomic, assign) NSInteger selected;
+@property (nonatomic, strong) NSString * title;
 
-@property (assign, nonatomic) BOOL selected;
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+-(NSDictionary *)toDictionary;
 
 @end
