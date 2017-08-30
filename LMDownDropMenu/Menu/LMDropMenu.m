@@ -30,7 +30,13 @@
 
 #define kCompleteBtn_height 30
 
-#define kTableFooterViewHeight kCompleteBtn_top + kCompleteBtn_height + kCompleteBtn_bottom
+#define kTableFooterViewHeight (kCompleteBtn_top + kCompleteBtn_height + kCompleteBtn_bottom)
+
+#define kLMMenuHeight_Supply 45
+
+#define ScreenWidth [UIScreen mainScreen] .bounds.size.width
+
+#define ScreenHeight [UIScreen mainScreen] .bounds.size.height
 
 
 
@@ -122,8 +128,14 @@
 
 @property (strong, nonatomic) UIButton *completeBtn;
 
+@property (strong, nonatomic) UIButton *antiElectionBtn;
+
 // tableViewSuper 高度
 @property (nonatomic, strong) MASConstraint *tableViewSuperHeight;
+
+@property (nonatomic, strong) MASConstraint *tableViewSuperTop;
+
+@property (nonatomic, strong) MASConstraint *tableViewSuperRight_Left;
 
 @end
 
@@ -145,6 +157,23 @@
         _tableViewSuper = [[UIView alloc] init];
         _tableViewSuper.clipsToBounds = YES;
         _tableViewSuper.backgroundColor = [UIColor colorWithRed:251 / 255.0 green:251 / 255.0 blue:251 / 255.0 alpha:1.0];
+        
+        // 反选按钮
+        _antiElectionBtn = [[UIButton alloc] init];
+        _antiElectionBtn.backgroundColor = [UIColor colorWithRed:0 / 255.0 green:202 / 255.0 blue:177 / 255.0 alpha:1.0];
+        [_antiElectionBtn setTitle:@"反选" forState:UIControlStateNormal];
+        _antiElectionBtn.layer.cornerRadius = 3.0f;
+        [_antiElectionBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [_antiElectionBtn addTarget:self action:@selector(antiElectionOnclick) forControlEvents:UIControlEventTouchUpInside];
+        [_tableViewSuper addSubview:_antiElectionBtn];
+        
+        [_antiElectionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.width.mas_equalTo(kCompleteBtn_width);
+            make.height.mas_equalTo(kCompleteBtn_height);
+            make.left.mas_equalTo(kCompleteBtn_right);
+            make.bottom.mas_equalTo(- kCompleteBtn_bottom);
+        }];
         
         // 完成按钮
         _completeBtn = [[UIButton alloc] init];
@@ -175,18 +204,18 @@
         
         [_tableViewSuper addSubview:_tableView];
         
-        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(0);
-            make.left.mas_equalTo(0);
-            make.right.mas_equalTo(0);
-            make.bottom.equalTo(_completeBtn.mas_top).offset(- kCompleteBtn_top);
-        }];
+        //        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //            make.top.mas_equalTo(0);
+        //            make.left.mas_equalTo(0);
+        //            make.right.mas_equalTo(0);
+        //            make.bottom.equalTo(_completeBtn.mas_top).offset(- kCompleteBtn_top);
+        //        }];
         
         
         [self registerCell];
         
         // self tapped
-        self.backgroundColor = [UIColor greenColor];
+        //        self.backgroundColor = [UIColor greenColor];
         UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuTapped:)];
         [self addGestureRecognizer:tapGesture];
         
@@ -212,7 +241,42 @@
 
 - (void)completeOnclick {
     
-    [self backgroundTapped:nil];
+    [self hiddenMenu];
+    
+    if([_delegate respondsToSelector:@selector(filterComplete)]) {
+        
+        [_delegate filterComplete];
+    }
+}
+
+
+- (void)antiElectionOnclick {
+    
+    if([_delegate respondsToSelector:@selector(antiElectionOnclick)]) {
+        
+        [_delegate antiElectionOnclick];
+    }
+    
+    [_tableView reloadData];
+}
+
+
+- (void)hiddenMenu {
+    
+    [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView leftTableView:_tableView rightTableView:nil title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
+        _show = NO;
+    }];
+    
+    [(CALayer *)self.bgLayers[_currentSelectedMenudIndex] setBackgroundColor:BackColor.CGColor];
+}
+
+
+- (void)filterCancel{
+    
+    if([_delegate respondsToSelector:@selector(filterCancel)]) {
+        
+        [_delegate filterCancel];
+    }
 }
 
 
@@ -224,7 +288,7 @@
     
     for ( int i = 0; i < count; i++) {
         
-//        _selectedList
+        //        _selectedList
     }
 }
 
@@ -371,6 +435,11 @@
     // calculate index
     NSInteger tapIndex = touchPoint.x / (self.frame.size.width / _numOfMenu);
     
+    if([_delegate respondsToSelector:@selector(menuTapped:)]) {
+        
+        [_delegate menuTapped:tapIndex];
+    }
+    
     for (int i = 0; i < _numOfMenu; i++) {
         if (i != tapIndex) {
             [self animateIndicator:_indicators[i] Forward:NO complete:^{
@@ -400,18 +469,22 @@
             _show = YES;
         }];
         
+        // 防止 iOS8 动画异常
+        //        [_tableView reloadData];
+        
         [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:SelectColor.CGColor];
+        
     }
+    
+    [self filterCancel];
 }
 
 
 - (void)backgroundTapped:(UITapGestureRecognizer *)paramSender {
     
-    [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView leftTableView:_tableView rightTableView:nil title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
-        _show = NO;
-    }];
+    [self hiddenMenu];
     
-    [(CALayer *)self.bgLayers[_currentSelectedMenudIndex] setBackgroundColor:BackColor.CGColor];
+    [self filterCancel];
 }
 
 
@@ -472,46 +545,94 @@
         
         if (_tableViewSuper) {
             
+            [_tableViewSuper setFrame:CGRectMake(0, kLMMenuHeight_Supply + self.origin.y, ScreenWidth, 0)];
+            
             [self.superview addSubview:_tableViewSuper];
             
-            __weak __typeof(self) weakSelf = self;
-            [_tableViewSuper mas_makeConstraints:^(MASConstraintMaker *make) {
-                
-                make.top.mas_equalTo(65);
-                make.left.right.equalTo(weakSelf.superview);
-                _tableViewSuperHeight = make.height.mas_equalTo(0);
-            }];
-            [_tableViewSuper layoutIfNeeded];
+            //            __weak __typeof(self) weakSelf = self;
+            //            [_tableViewSuper mas_makeConstraints:^(MASConstraintMaker *make) {
+            //
+            //                _tableViewSuperTop = make.top.mas_equalTo(CGRectGetHeight(self.frame));
+            //                _tableViewSuperRight_Left = make.left.right.equalTo(weakSelf.superview);
+            //                _tableViewSuperHeight = make.height.mas_equalTo(0);
+            //            }];
+            //            [_tableViewSuper layoutIfNeeded];
             
-            tableViewHeight = ([leftTableView numberOfRowsInSection:0] > 5) ? (5 * kCellHeight) + kTableFooterViewHeight + kCellHeight / 2 : ([leftTableView numberOfRowsInSection:0] * kCellHeight) + kTableFooterViewHeight;
+            // 菜单可用高度
+            CGFloat heightALL = ScreenHeight - 64 - kLMMenuHeight_Supply - 49;
+            
+            // 菜单规定高度
+            CGFloat heightPart = heightALL - kTableFooterViewHeight - 80;
+            
+            // Cell个数
+            NSUInteger cellCount = [leftTableView numberOfRowsInSection:0];
+            
+            if((cellCount * kCellHeight) > heightPart) {
+                
+                for (int i = 0; i < cellCount; i++) {
+                    
+                    tableViewHeight += kCellHeight;
+                    if(tableViewHeight > heightPart) {
+                        
+                        tableViewHeight = tableViewHeight - kCellHeight / 2 + kTableFooterViewHeight;
+                        break;
+                    }
+                }
+            } else {
+                
+                tableViewHeight = cellCount * kCellHeight + kTableFooterViewHeight;
+            }
+            
             NSLog(@"");
         }
+        //
+        //        [_tableViewSuperHeight uninstall];
+        //        [_tableViewSuperTop uninstall];
+        //        [_tableViewSuperRight_Left uninstall];
+        //
+        //        __weak __typeof(self) weakSelf = self;
+        //
+        //        NSLog(@"dddd%@", NSStringFromCGRect(_tableViewSuper.frame));
+        //
+        //        [_tableViewSuper mas_updateConstraints:^(MASConstraintMaker *make) {
+        //
+        //            _tableViewSuperTop = make.top.mas_equalTo(CGRectGetHeight(self.frame));
+        //            _tableViewSuperRight_Left = make.left.right.equalTo(weakSelf.superview);
+        //            make.height.mas_equalTo(tableViewHeight);
+        //        }];
+        //
+        //        [UIView animateWithDuration:4.2 animations:^{
+        //
+        //            [_tableViewSuper layoutIfNeeded];
+        //        }];
+        //
+        //        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //
+        //            sleep(5);
+        //            dispatch_async(dispatch_get_main_queue(), ^{
+        //
+        //                NSLog(@"dddd%@", NSStringFromCGRect(_tableViewSuper.frame));
+        //            });
+        //        });
         
-        [self.tableViewSuperHeight uninstall];
-        
-        [_tableViewSuper mas_updateConstraints:^(MASConstraintMaker *make) {
-            
-            make.height.mas_equalTo(tableViewHeight);
-        }];
+        [_tableView setFrame:CGRectMake(0, 0, ScreenWidth, tableViewHeight - kTableFooterViewHeight)];
         
         [UIView animateWithDuration:0.2 animations:^{
             
-            [_tableViewSuper layoutIfNeeded];
+            [_tableViewSuper setFrame:CGRectMake(0, kLMMenuHeight_Supply + self.origin.y, ScreenWidth, tableViewHeight)];
         }];
     } else {
         
         if (_tableViewSuper) {
             
-            [self.tableViewSuperHeight uninstall];
-            
-            [_tableViewSuper mas_updateConstraints:^(MASConstraintMaker *make) {
-                
-                make.height.offset(0);
-            }];
+            //            if (_tableViewSuper) {
+            //
+            //                [_tableViewSuper removeFromSuperview];
+            //            }
             
             [UIView animateWithDuration:0.2 animations:^{
                 
-                [_tableViewSuper layoutIfNeeded];
+                [_tableViewSuper setFrame:CGRectMake(0, kLMMenuHeight_Supply + self.origin.y, ScreenWidth, 0)];
             } completion:^(BOOL finished) {
                 
                 if (_tableViewSuper) {
@@ -519,6 +640,28 @@
                     [_tableViewSuper removeFromSuperview];
                 }
             }];
+            
+            
+            
+            //            [self.tableViewSuperHeight uninstall];
+            //
+            //            CGFloat fff = CGRectGetHeight(self.frame);
+            //
+            //            [_tableViewSuper mas_updateConstraints:^(MASConstraintMaker *make) {
+            //                make.top.mas_equalTo(CGRectGetHeight(self.frame));
+            //                make.height.mas_equalTo(0);
+            //            }];
+            //
+            //            [UIView animateWithDuration:4.2 animations:^{
+            //
+            //                [_tableViewSuper layoutIfNeeded];
+            //            } completion:^(BOOL finished) {
+            //
+            //                if (_tableViewSuper) {
+            //
+            //                    [_tableViewSuper removeFromSuperview];
+            //                }
+            //            }];
         }
     }
 }
@@ -606,7 +749,7 @@
     
     if (self.delegate || [self.delegate respondsToSelector:@selector(menu:didSelectRowAtIndexPath:)]) {
         
-//        [self confiMenuWithSelectRow:indexPath.row];
+        //        [self confiMenuWithSelectRow:indexPath.row];
         
         [self.delegate menu:self didSelectRowAtIndexPath:[LMIndexPath indexPathWithCol:self.currentSelectedMenudIndex row:indexPath.row]];
         

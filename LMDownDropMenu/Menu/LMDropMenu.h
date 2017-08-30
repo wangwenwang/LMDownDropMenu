@@ -46,6 +46,14 @@
 
 //@property (nonatomic, weak) id <JSDropDownMenuDataSource> dataSource;
 
+- (void)antiElectionOnclick;
+
+- (void)filterComplete;
+
+- (void)filterCancel;
+
+- (void)menuTapped:(NSUInteger)touchIndex;
+
 @end
 
 
